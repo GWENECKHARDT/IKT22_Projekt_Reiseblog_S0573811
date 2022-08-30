@@ -1,0 +1,16 @@
+{
+  "name": "ikt22_projekt_reiseblog_frontend",
+  "version": "1.0.0",
+  "description": "Frontend des IKT-Projektes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -c-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "ol": "^7.0.0"
+  }
+}

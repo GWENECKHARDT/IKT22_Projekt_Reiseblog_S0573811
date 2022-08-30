@@ -1,0 +1,15 @@
+.mdl-button {
+    margin: 10px;
+}
+
+#phoneText {
+    display: none;
+}
+
+#mailText {
+    display: none;
+}
+
+#chatText {
+    display: none;
+}

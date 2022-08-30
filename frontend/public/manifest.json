@@ -1,0 +1,38 @@
+{
+  "name": "Reiseblog",
+  "short_name": "Reiseblog",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#76B900",
+  "description": "IKT22_Projekt_Reiseblog",
+  "lang": "de-DE",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "theme-color": "#76B900",
+  "icons": [
+    {
+      "src": "./src/pictures/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./src/pictures/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./src/pictures/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./src/pictures/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

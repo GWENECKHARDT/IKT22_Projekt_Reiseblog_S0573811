@@ -1,0 +1,17 @@
+.text-center {
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+}
+
+.map
+{
+    text-align: center;
+    height: 600px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    display: block;
+}

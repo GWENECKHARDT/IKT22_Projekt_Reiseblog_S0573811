@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reiseblog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-yellow.min.css">
+
+<!--    Aus Herr Freiheits Folien: Funktionierte auf einmal nicht mehr "Couldn't find the requested file" -->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>-->
+
+<!--    Neuer Code/neue Links: https://openlayers.org/en/v4.6.5/examples/wms-tiled.html?q=wms-->
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+
+    <link rel="stylesheet" href="/src/css/app.css">
+    <link rel="stylesheet" href="/src/css/feed.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+    <link rel="apple-touch-startup-image" href="apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+    <link rel="apple-touch-startup-image" href="apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+
+</head>
+<body>
+
+<div id="app">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Reiseblog</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="/">Bilder</a>
+                    <a class="mdl-navigation__link" href="/help">Hilfe</a>
+                    <a class="mdl-navigation__link" href="/map">Karte</a>
+                    <div class="drawer-option">
+                        <button class="enable-notifications mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent">
+                            Benachrichtigungen Ein
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Reiseblog</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">Bilder</a>
+                <a class="mdl-navigation__link" href="/help">Hilfe</a>
+                <a class="mdl-navigation__link" href="/map">Karte</a>
+                <div class="drawer-option">
+                    <button class="enable-notifications mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent">
+                        Benachrichtigungen Ein
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content mat-typography">
+            <form>
+                <div id="create-post">
+                    <video id="player" autoplay></video>
+                    <canvas id="canvas" width="320px" height="240px"></canvas>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="capture-btn">Foto</button>
+                    <div id="pick-image">
+                        <h6>Oder Bild auswählen</h6>
+                        <input type="file" accept="image/*" id="image-picker">
+                    </div>
+                    <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="title">
+                        <label class="mdl-textfield__label" for="title" name="title">Titel</label>
+                    </div>
+                    <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-location">
+                        <input class="mdl-textfield__input" type="text" id="location">
+                        <label class="mdl-textfield__label" for="location" name="location">Ort</label>
+                    </div>
+
+                    <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-date">
+                        <input class="mdl-textfield__input" type="text" id="date">
+                        <label class="mdl-textfield__label" for="date" name="date">Datum</label>
+                    </div>
+                    <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-notes">
+                        <input class="mdl-textfield__input" type="text" id="notes">
+                        <label class="mdl-textfield__label" for="notes" name="notes">Notizen</label>
+                    </div>
+
+<!--                    <div class = "mdl-textfield mdl-js-textfield">
+                     <textarea class = "mdl-textfield__input" type = "text" rows =  "4" id = "manual-notes" ></textarea>
+                        <label class = "mdl-textfield__label" for = "manual-notes">Notizen</label>
+                    </div>-->
+
+
+                    <div class="input-section">
+                        <button class="mdl-button mdl-js-button mdl-button--colored" type="button" id="location-btn">Location</button>
+                        <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
+                    </div>
+
+                    <div id="map" class="map"></div>
+
+                    <br>
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--accent"
+                                type="submit" id="post-btn">Speichern
+                        </button>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--fab" id="close-create-post-modal-btn" type="button">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div id="show-info"></div>
+<!--            https://pixabay.com/de/photos/strand-meer-fu%c3%9fabdr%c3%bccke-sand-6292382/-->
+            <img srcset="./src/pictures/header_picture.jpg 1200w,
+                     ./src/pictures/header_picture.jpg 900w,
+                     ./src/pictures/header_picture.jpg 480w"
+                 src="./src/pictures/header_picture.jpg" alt="Malaga" class="main-image">
+            <div class="page-content">
+                <h5 class="text-center mdl-color-text--primary">Reiseblog</h5>
+                <div id="shared-moments"></div>
+            </div>
+            <div class="floating-button">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
+                        id="share-image-button">
+                    <i class="material-icons">add_photo_alternate</i>
+                </button>
+            </div>
+            <div id="confirmation-toast" aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button type="button" class="mdl-snackbar__action"></button>
+            </div>
+        </main>
+    </div>
+</div>
+<script defer src="/src/js/material.min.js"></script>
+<script defer src="/src/js/idb.js"></script>
+<script defer src="/src/js/db.js"></script>
+<script defer src="/src/js/app.js"></script>
+<script defer src="/src/js/feed.js"></script>
+<!--<script defer type="module" src="/src/js/feed.js"></script>-->
+
+</body>
+</html>
