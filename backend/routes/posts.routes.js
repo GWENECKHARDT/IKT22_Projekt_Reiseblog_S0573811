@@ -1,5 +1,3 @@
-//import webpush from 'web-push';
-
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/posts')
@@ -10,14 +8,14 @@ require('dotenv').config()
 
 
 //Push-Benachrichtigungen:
-const publicVapidKey = 'BFBlrf5uFuv7nmZpQD8ubQmoZwR0Qk8RE8f85js5VSYjDrBOOGFr-onJWgq3T_wbWC664LPnUutssKyCM7jGwLc';
-const privateVapidKey = 'WK75Qk2E_pHRhBEaOFfsrrPiOyHngLffJ7BwYmPKQ9w';
+const publicVapidKey = 'BOUbYc6tO5KzEgRJXSAIhPfyv7RssTducAKKgsuaS1c_pmm3FbLIjYF9ONS3ergDI9gvY6eJo1T2EiYFTV4seNs';
+const privateVapidKey = 'omLzpc1ByE5GSzlYwdJkY3-irQpJ4wtTTothopLVbI0';
 const pushSubscription = {
-    endpoint: 'https://fcm.googleapis.com/fcm/send/e5_7er1wUMk:APA91bFsbpqUTboWR_yJMayEog4_h2QEdTpmnhi5Wy1fNXEI7Go7dBFZb4PWrQph0mQins03sXL4ud7lD-h9mMsxbmzE3GEL0VhJOo7ssaSqwu1RVk4bpjxOvZeI6C3JnE1surVBOrYg',
+    endpoint: 'https://fcm.googleapis.com/fcm/send/dAvZOslAkb8:APA91bFIlblx2V3sPDK17NhaLY7L1HrspeAhw6ENrlK9fYQhD89mp5IklqIv7SGGQ9jHVHwk1aRekokDTJFX8nKuUNj4OylRRtwNKrLBUO9Znan2jQX_77gl_EG3RQSSKJjj1B8DctnO',
     expirationTime: null,
     keys: {
-        p256dh: 'BNNp9_kt8S9zYUvzz4-w9R1eV-3fe1wpLKWFwdqWXN-a35iPdiZMmPdd6uSgi2QqgnRg3qGRaSgosVsT6A13mh4',
-        auth: 'UZgUWvc8yV3Oav_5S3dQeg'
+        p256dh: 'BOkpAWWVgYPIh-rNVzTs5bD1WHL9a71bs0Bh11rWn-ysfeDTBFu_c7-MtDwK-XFBVii-t70Pm7_swSma7JUIbUs',
+        auth: '004flDcxfEZ-DsakV0CbfA'
     }
 };
 
@@ -31,8 +29,7 @@ function sendNotification() {
     });
     webpush.sendNotification(pushSubscription,payload)
         .catch(err => console.error(err));
-    console.log('push notification sent');
-    // res.status(201).json({ message: 'push notification sent'});
+    console.log('Benachrichtigung versandt');
 }
 
 
@@ -59,7 +56,7 @@ router.post('/', upload.single('file'), async(req, res) => {
         console.log('newPost', newPost)
         await newPost.save();
         sendNotification();
-        console.log("Notification sended");
+        console.log("Benachrichtigung versandt");
         res.send(newPost);
     }
 })
@@ -107,7 +104,7 @@ function getOnePost(id) {
             }) // toArray find filename
 
         } catch {
-            reject(new Error("Post does not exist!"));
+            reject(new Error("Post existiert nicht!"));
         }
     })
 }
@@ -124,12 +121,12 @@ function getAllPosts() {
                 const onePost = await getOnePost(post._id);
                 sendAllPosts.push(onePost);
             }
-            console.log('sendAllPosts', sendAllPosts)
+            console.log('sendAllPosts: ', sendAllPosts)
             resolve(sendAllPosts)
         }
         catch
         {
-            reject(new Error("Posts do not exist!"));
+            reject(new Error("Posts existiert nicht!"));
         }
     });
 }
@@ -166,7 +163,7 @@ router.get('/:id', async(req, res) => {
         .catch( () => {
             res.status(404);
             res.send({
-                error: "Post does not exist!"
+                error: "Post existiert nicht!"
             });
         })
 });
@@ -181,7 +178,7 @@ router.get('/', async(req, res) => {
         .catch( () => {
             res.status(404);
             res.send({
-                error: "Post do not exist!"
+                error: "Post existiert nicht!"
             });
         })
 });
@@ -199,7 +196,7 @@ router.get('/map', async(req, res)=>
         {
             res.status(404);
             res.send({
-                error: "Post hat keine Latitude und keine Longitude"
+                error: "Post hat keinen Breitengrad und keinen Längengrad!"
             });
         })
 });
@@ -220,7 +217,7 @@ router.delete('/:id', async(req, res) => {
         res.status(204).send()
     } catch {
         res.status(404)
-        res.send({ error: "Post does not exist!" })
+        res.send({ error: "Post existiert nicht!" })
     }
 });
 

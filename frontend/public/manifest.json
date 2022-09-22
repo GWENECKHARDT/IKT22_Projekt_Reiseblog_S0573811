@@ -3,12 +3,12 @@
   "short_name": "Reiseblog",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#76B900",
+  "background_color": "#ffeb3b",
   "description": "IKT22_Projekt_Reiseblog",
   "lang": "de-DE",
   "dir": "ltr",
   "orientation": "portrait-primary",
-  "theme-color": "#76B900",
+  "theme-color": "#ff9800",
   "icons": [
     {
       "src": "./src/pictures/manifest-icon-192.maskable.png",

@@ -25,8 +25,13 @@ im seitlichen Menü, Benachrichtigungen aktiviert werden. Man bekommt eine Benac
 aktiviert hat und dann wieder, sobald Beiträge in der Anwendung geteilt werden.<br>
 In der Aktivierungs-Benachrichtigung, kann man seine Entscheidung über "Ok" und "Cancel" noch einmal verändern.
 In der Beitrags-Benachrichtigung, gelangt man direkt in die Bildergalerie, wenn man auf die Benachrichtigung klickt.<br>
+Das Frontend ist so gestaltet, dass sich die Anwendung sowohl auf einem Computer, wie auch auf einem Smartphone 
+bedienen lässt.<br>
 
 Hinweis: Sowohl die Nutzung der Kamera, sowie des Standortes und der Benachrichtigungen, werden vom Browser selbst 
 noch einmal abgefragt. Hat man diese schon vorab verweigert, muss man sie in den Einstellungen des Browsers wieder
 aktivieren.
+
+Datenbankanbindung:
+Nach dem Klonen des Projektes von GitHub muss die Variable DB_CONNECTION in der Datei .env im Ordner Backend angepasst werden.<br>
 
