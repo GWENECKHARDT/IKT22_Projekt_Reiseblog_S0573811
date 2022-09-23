@@ -29,7 +29,7 @@ function displayConfirmNotification() {
                 //https://icons8.com/icon/sz8cPVwzLrMP/check-mark
                 { action: 'confirm', title: 'Ok', icon: '/src/pictures/ok.png' },
                 //https://icons8.com/icons/set/X-red--static--red
-                { action: 'cancel', title: 'Abbrechen', icon: '/src/pictures/abbrechen.png' },
+                //{ action: 'cancel', title: 'Abbrechen', icon: '/src/pictures/abbrechen.png' },
             ]};
 
         navigator.serviceWorker.ready

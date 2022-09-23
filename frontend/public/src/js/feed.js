@@ -252,8 +252,10 @@ function createCard(card) {
     cardTitleTextElement.className = 'mdl-card__title-text';
     cardTitleTextElement.textContent = card.title;
     //console.log(card.title);
-    cardTitleTextElement.classList.add('whiteText');
-    cardTitle.appendChild(cardTitleTextElement);
+    cardTitleTextElement.classList.add('greyTitle');
+    //Aus Bildbereich herausgenommen, da man es keine Farbe gibt, die man auf allen Bildern definitiv sehen kann
+    //cardTitle.appendChild(cardTitleTextElement);
+    cardWrapper.appendChild(cardTitleTextElement);
     let cardSupportingText = document.createElement('div');
     cardSupportingText.className = 'mdl-card__supporting-text';
     cardSupportingText.textContent = card.location;

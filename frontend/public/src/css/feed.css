@@ -82,8 +82,12 @@ h3 {
     margin: 10px auto;
 }
 
-.whiteText {
-    color: white;
+.greyTitle {
+    color: dimgrey;
+}
+
+.mdl-card__title-text {
+    align-self: center;
 }
 
 #create-post .map {
