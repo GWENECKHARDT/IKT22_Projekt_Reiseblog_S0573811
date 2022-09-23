@@ -34,7 +34,7 @@ function displayConfirmNotification() {
 
         navigator.serviceWorker.ready
             .then( sw => {
-                sw.showNotification('Erfolgreich aktiviert (von Service Worker)!', options).then(r => console.log("Anzeige Push-Nachricht" + options));
+                sw.showNotification('Benachrichtigungen Erfolgreich aktiviert!', options).then(r => console.log("Anzeige Push-Nachricht" + options));
             });
         console.log("Anzeige Push-Nachricht" + options);
     }
@@ -72,7 +72,7 @@ function configurePushSubscription() {
         .then( sub => {
             if(sub === null) {
                 console.log('sub==ull')
-                let vapidPublicKey = 'BOUbYc6tO5KzEgRJXSAIhPfyv7RssTducAKKgsuaS1c_pmm3FbLIjYF9ONS3ergDI9gvY6eJo1T2EiYFTV4seNs';
+                let vapidPublicKey = 'BLY-eiPr8iVy2l1CHWop2m3Mn_UoNtEQCtJVzgev_uNNDQHjcpz6FAt7v9cNI_PTCt7N-_VSJSDwp0X_DQ0BXHA';
                 let convertedVapidPublicKey = urlBase64ToUint8Array(vapidPublicKey);
                 console.log("swReg: " + swReg);
                 console.log(convertedVapidPublicKey);
@@ -84,7 +84,7 @@ function configurePushSubscription() {
                 // already subscribed
             }
             //Falls schon angemeldet wurde, dann einmal folgenden Code ausführen, um es zu löschen:
-/*                        sub.unsubscribe()
+                        /*sub.unsubscribe()
                             .then( () => {
                                 console.log('unsubscribed()', sub)
                             })*/
@@ -107,6 +107,7 @@ function configurePushSubscription() {
         });
 }
 
+
 function askForNotificationPermission() {
     Notification.requestPermission( result => {
         console.log('Auswahl:', result);
@@ -119,6 +120,8 @@ function askForNotificationPermission() {
     });
 }
 
+//Button Benachrichtigungen ist nur sichtbar, wenn Push-Benachrichtigungen vom Browser
+//unterstützt werden.
 if('Notification' in window && 'serviceWorker' in navigator) {
     for(let button of enableNotificationsButtons) {
         button.style.display = 'inline-block';

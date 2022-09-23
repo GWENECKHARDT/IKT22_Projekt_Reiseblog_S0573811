@@ -1,7 +1,7 @@
 importScripts('/src/js/idb.js');
 importScripts('/src/js/db.js');
 
-const CACHE_VERSION = 17;
+const CACHE_VERSION = 23;
 const CURRENT_STATIC_CACHE = 'static-v'+CACHE_VERSION;
 const CURRENT_DYNAMIC_CACHE = 'dynamic-v'+CACHE_VERSION;
 
@@ -161,6 +161,7 @@ self.addEventListener('notificationclick', event => {
 
     console.log(notification);
 
+
     if(action === 'confirm') {
         console.log('confirm was chosen');
         notification.close();
@@ -174,12 +175,13 @@ self.addEventListener('notificationclick', event => {
                     });
 
                     if(client !== undefined) {
-                        //client.navigate('http://localhost:8080');
-                        client.navigate(notification.data.url);
+                        client.navigate('http://localhost:8080');
+                        //client.navigate(notification.data.url).then(r => console.log('Benachrichtigungen nicht aktiviert'));
                         client.focus();
                     } else {
-                        //clients.openWindow('http://localhost:8080');
-                        clients.openWindow(notification.data.url);
+                        clients.openWindow('http://localhost:8080');
+                        alert("Die Benachrichtigungen kannst du in deinen Browser-Einstellungen wieder deaktivieren.");
+                        //clients.openWindow(notification.data.url).then(r => console.log('Benachrichtigungen aktiviert'));
                     }
                     notification.close();
                 })
@@ -188,7 +190,7 @@ self.addEventListener('notificationclick', event => {
 });
 
 self.addEventListener('push', event => {
-    console.log('push notification received', event);
+    console.log('Benachrichtigung erhalten:', event);
     let data = { title: 'Test', content: 'Fallback message', openUrl: '/map'};
     if(event.data) {
         data = JSON.parse(event.data.text());
@@ -202,7 +204,6 @@ self.addEventListener('push', event => {
         }
 
     };
-    //let options = { body: "Wuhuu"};
 
     event.waitUntil(
         //self.registration.showNotification("Hello!!", options)

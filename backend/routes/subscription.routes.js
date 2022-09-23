@@ -4,8 +4,8 @@ const express = require('express');
 const webpush = require('web-push');
 const router = express.Router();
 
-const publicVapidKey = 'BOUbYc6tO5KzEgRJXSAIhPfyv7RssTducAKKgsuaS1c_pmm3FbLIjYF9ONS3ergDI9gvY6eJo1T2EiYFTV4seNs';
-const privateVapidKey = 'omLzpc1ByE5GSzlYwdJkY3-irQpJ4wtTTothopLVbI0';
+const publicVapidKey = 'BLY-eiPr8iVy2l1CHWop2m3Mn_UoNtEQCtJVzgev_uNNDQHjcpz6FAt7v9cNI_PTCt7N-_VSJSDwp0X_DQ0BXHA';
+const privateVapidKey = 'cQF0xsXJWheR_FsvtcpZ4TYDxAcUC9LGCEy_yLSkXFk';
 
 router.post('/', async(req, res) => {
     const subscription = req.body;
@@ -14,5 +14,6 @@ router.post('/', async(req, res) => {
 
     webpush.setVapidDetails('mailto:s0573811@htw-berlin.de', publicVapidKey, privateVapidKey);
 });
+
 
 module.exports = router;

@@ -35,3 +35,8 @@ aktivieren.
 Datenbankanbindung:
 Nach dem Klonen des Projektes von GitHub muss die Variable DB_CONNECTION in der Datei .env im Ordner Backend angepasst werden.<br>
 
+PS.:
+Um einen ersten Eindruck von der Anwendung zu bekommen, besuche https://gweneckhardt.github.io/ .
+Hier kannst du sehen, was du mit der Anwendung machen kannst und wie sie aussieht. 
+Aber bedenke, dass die Eingaben, die du machst, nicht gespeichert werden.
+

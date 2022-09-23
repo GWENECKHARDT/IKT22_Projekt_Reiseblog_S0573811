@@ -8,14 +8,14 @@ require('dotenv').config()
 
 
 //Push-Benachrichtigungen:
-const publicVapidKey = 'BOUbYc6tO5KzEgRJXSAIhPfyv7RssTducAKKgsuaS1c_pmm3FbLIjYF9ONS3ergDI9gvY6eJo1T2EiYFTV4seNs';
-const privateVapidKey = 'omLzpc1ByE5GSzlYwdJkY3-irQpJ4wtTTothopLVbI0';
+const publicVapidKey = 'BLY-eiPr8iVy2l1CHWop2m3Mn_UoNtEQCtJVzgev_uNNDQHjcpz6FAt7v9cNI_PTCt7N-_VSJSDwp0X_DQ0BXHA';
+const privateVapidKey = 'cQF0xsXJWheR_FsvtcpZ4TYDxAcUC9LGCEy_yLSkXFk';
 const pushSubscription = {
-    endpoint: 'https://fcm.googleapis.com/fcm/send/dAvZOslAkb8:APA91bFIlblx2V3sPDK17NhaLY7L1HrspeAhw6ENrlK9fYQhD89mp5IklqIv7SGGQ9jHVHwk1aRekokDTJFX8nKuUNj4OylRRtwNKrLBUO9Znan2jQX_77gl_EG3RQSSKJjj1B8DctnO',
+    endpoint: 'https://fcm.googleapis.com/fcm/send/dAar95GZcc8:APA91bESyqlMIvK0vsQG83iPpgdx9exm1G_pIJajS1JB2AJWtCk5wy7tNBbcKBILaSUWSOqv25y27Heqrj67UsCrE9Yhi7uYrZIxz_E-oEIBf3C1OI-pNWg94rDFvFbD4fCai3tgLRvf',
     expirationTime: null,
     keys: {
-        p256dh: 'BOkpAWWVgYPIh-rNVzTs5bD1WHL9a71bs0Bh11rWn-ysfeDTBFu_c7-MtDwK-XFBVii-t70Pm7_swSma7JUIbUs',
-        auth: '004flDcxfEZ-DsakV0CbfA'
+        p256dh: 'BOYkbmUbvcKHolZh3ARHlgyPX1cl0lDxqqDqKKLK0coBOISVuhSME6XJtBHsSkNaWBb6wV2BbXJ5T6mLZMZt7a0',
+        auth: 'MdEtsU6rwHGb9E-JV37xNA'
     }
 };
 
@@ -23,8 +23,8 @@ function sendNotification() {
     console.log("Funktionsaufruf sendNotification");
     webpush.setVapidDetails('mailto:s0573811@htw-berlin.de', publicVapidKey, privateVapidKey);
     const payload = JSON.stringify({
-        title: 'New Push Notification',
-        content: 'New data in database!',
+        title: 'Ein neues Bild in deinem Blog!',
+        content: 'Klick hier und schau nach, was es Neues gibt!',
         openUrl: '/'
     });
     webpush.sendNotification(pushSubscription,payload)
